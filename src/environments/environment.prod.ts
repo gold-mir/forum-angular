@@ -1,3 +1,6 @@
+import { firebaseConfig } from './../app/api-keys';
+
 export const environment = {
-  production: true
+  production: true,
+  firebase: firebaseConfig
 };
