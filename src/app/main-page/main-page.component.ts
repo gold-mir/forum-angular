@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -9,7 +10,7 @@ import { PostService } from '../post.service';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private postService :PostService) { }
+  constructor(public postService :PostService, private router :Router) { }
 
   ngOnInit() {
   }
