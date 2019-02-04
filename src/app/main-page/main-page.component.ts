@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PostService } from '../post.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Post } from '../models/post.model';
 
 @Component({
   selector: 'app-main-page',
@@ -10,9 +12,17 @@ import { Router } from '@angular/router';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(public postService :PostService, private router :Router) { }
+  public postsObservable: Observable<any>;
+  public posts: Post[];
+
+  constructor(public postService :PostService, private router :Router) { 
+  }
 
   ngOnInit() {
+    this.postsObservable = this.postService.getPosts();
+    this.postsObservable.subscribe((input) => {
+      this.posts = input;
+    });
   }
 
 }

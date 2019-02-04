@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { AppComponent } from './app.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -9,6 +10,7 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { PostDisplayComponent } from './post-display/post-display.component';
 
 import { environment } from './../environments/environment';
+import { PostService } from './post.service';
 
 @NgModule({
   declarations: [
@@ -20,9 +22,10 @@ import { environment } from './../environments/environment';
   imports: [
     BrowserModule,
     routing,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
