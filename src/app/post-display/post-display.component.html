@@ -1,16 +1,17 @@
-<h2>{{(post | async)?.title}}</h2>
-<h6>{{(post | async)?.author}}</h6>
+<div *ngIf="postExists; else notFound">
+    <div>
+        <h2>{{(post | async)?.title}}</h2>
+        <h6>{{(post | async)?.author}}</h6>
 
-<p>{{(post | async)?.body}}</p>
+        <p>{{(post | async)?.body}}</p>
+    </div>
+    <div>
+        {{(comments | async)?.length}} comments
+    </div>
 
-<!-- <app-comment-display *ngIf="(comments | async).length > 0; else noComments" [comments]="comments"></app-comment-display>
-
-<ng-template #noComments>
-    No comments yet
-</ng-template> -->
-
-<div>
-    {{(comments | async)?.length}} comments
+    <app-comment-display [comments]="comments"></app-comment-display>
 </div>
 
-<app-comment-display [comments]="comments"></app-comment-display>
+<ng-template #notFound>
+    <h2>Post id {{postID}} not found</h2>
+</ng-template>

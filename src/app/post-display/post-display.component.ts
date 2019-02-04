@@ -19,6 +19,8 @@ export class PostDisplayComponent implements OnInit {
   public comments: Observable<Comment[]>;
   public commentData: Comment[];
 
+  public postExists = true;
+
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
@@ -28,12 +30,15 @@ export class PostDisplayComponent implements OnInit {
       this.comments = this.postService.getComments(this.postID);
 
       this.post.subscribe((post: Post) => {
-        this.postData = post;
+        if(post != null){
+          this.postData = post;
+        } else {
+          this.postExists = false;
+        }
       });
 
       this.comments.subscribe((comments) => {
         this.commentData = comments;
-        console.log(this.commentData);
       });
     });
   }

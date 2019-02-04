@@ -32,9 +32,17 @@ export class PostService {
 
     return new Observable<Post>((observer) => {
       post.subscribe((data: any) => {
-        let postData = data.payload.val();
-        let output = new Post(postData.title, postData.body, postData.author, data.key);
-        observer.next(output);
+        if(data.key == null){
+          observer.next(null);
+        } else {
+          let postData = data.payload.val();
+          let output = new Post(postData.title, postData.body, postData.author, data.key);
+          observer.next(output);
+        }
+      },
+      (error) => {
+        console.log(error);
+        observer.error(error);
       });
     });
   }
