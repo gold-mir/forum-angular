@@ -1,1 +1,15 @@
-<ul *ngFor="let comment of comments | async">{{comment.body}} - {{comment.author}}</ul>
+<!-- <ul *ngFor="let comment of comments | async">{{comment.body}} - {{comment.author}}</ul> -->
+
+<!-- <div *ngFor="let comment of comments | async">
+    <p><small>{{comment.author}} said:</small></p>
+    <p>{{comment.body}}</p>
+    <hr>
+</div> -->
+
+<div class="card card-body">
+    <div *ngFor="let comment of comments | async">
+        <p><small>{{comment.author}} said:</small></p>
+        <p>{{comment.body}}</p>
+        <hr>
+    </div>
+</div>

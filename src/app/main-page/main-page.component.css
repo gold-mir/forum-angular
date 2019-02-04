@@ -1,0 +1,15 @@
+#new-post {
+    width: 100%;
+}
+
+#login {
+    text-align: center;
+    margin-top: 4%;
+}
+#login button {
+    width: 45%;
+    display: inline-block;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+

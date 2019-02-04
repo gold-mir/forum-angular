@@ -1,3 +1,10 @@
-<ul>
-  <li *ngFor="let post of posts | async"><a [routerLink]="['post',post.id]">{{post.title}} - {{post.author}}</a></li>
-</ul>
+<div>
+  <div *ngFor="let post of posts | async" class="card">
+    <div class="card-body post-display">
+        <h5 class="card-title"><a [routerLink]="['post',post.id]">{{post.title}}</a></h5>
+        <p class="text-muted"><small>{{post.author}}</small></p>
+    </div>
+  </div>
+</div>
+
+<!-- <a [routerLink]="['post',post.id]">{{post.title}} - {{post.author}}</a> -->

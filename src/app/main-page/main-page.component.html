@@ -1,3 +1,20 @@
-<app-post-list [posts]="postsObservable"></app-post-list>
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body sidebar">
+                <a routerLink="/new"><button class="btn btn-primary" id="new-post">New Post</button></a>
+                <hr>
+                <div id=login>
+                    <h3>Account</h3>
+                    <p class="text-muted"><small>(Coming Soon)</small></p>
 
-<a routerLink="/new"><button>New Post</button></a>
+                    <button class="btn btn-secondary" disabled>Login</button>
+                    <button class="btn btn-secondary" disabled>Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <app-post-list [posts]="postsObservable"></app-post-list>
+    </div>
+</div>

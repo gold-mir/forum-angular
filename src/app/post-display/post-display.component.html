@@ -1,20 +1,31 @@
-<a routerLink="/"><button>See all posts</button></a>
-
 <div *ngIf="postExists; else notFound">
-    <div>
-        <h2>{{(post | async)?.title}}</h2>
-        <h6>{{(post | async)?.author}}</h6>
-
-        <p>{{(post | async)?.body}}</p>
+    <div class="card">
+        <div class=card-header>
+            <a routerLink="/"><small>See all posts</small></a>
+            <hr>
+            <h2>{{(post | async)?.title}}</h2>
+            <p>{{(post | async)?.author}}</p>
+        </div>
+        <div class="card-body">
+            <p>{{(post | async)?.body}}</p>
+            <!-- <hr>
+            <p>{{(comments | async)?.length}} comments</p>
+            <div id="new-comment">
+                <app-new-comment [parentID]="postID"></app-new-comment>
+            </div> -->
+        </div>
     </div>
-    <div>
-        {{(comments | async)?.length}} comments
+    <div id="comments">
+        <p>{{(comments | async)?.length}} comments</p>
+        <div id="new-comment">
+            <app-new-comment [parentID]="postID"></app-new-comment>
+        </div>
+        <app-comment-display [comments]="comments"></app-comment-display>
     </div>
-
-    <app-comment-display [comments]="comments"></app-comment-display>
-    <app-new-comment [parentID]="postID"></app-new-comment>
 </div>
 
 <ng-template #notFound>
-    <h2>Post id {{postID}} not found</h2>
+    <div class="card card-header" id="comments">
+        <h2>Post id {{postID}} not found</h2>
+    </div>
 </ng-template>

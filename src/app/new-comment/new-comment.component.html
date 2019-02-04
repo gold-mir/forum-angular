@@ -1,10 +1,13 @@
-<div *ngIf="errorMessage != ''">
-  {{errorMessage}}
+<div id="container">
+  <div *ngIf="errorMessage != ''">
+      {{errorMessage}}
+    </div>
+    
+    <form (ngSubmit)="submit(); input.reset()" #input>
+      <div>
+        <textarea rows="8" placeholder="Add a comment" [(ngModel)]="body" name="body-input" id="body-input" class="form-control"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Save</button>
+      <button class="btn btn-secondary" (click)="input.reset()" type="button">Cancel</button>
+    </form>
 </div>
-
-<form (ngSubmit)="submit(); input.reset()" #input>
-  <div>
-    <textarea rows="15" placeholder="Comment goes here" [(ngModel)]="body" name="body-input" id="body-input"></textarea>
-  </div>
-  <button type="submit">Save</button>
-</form>
