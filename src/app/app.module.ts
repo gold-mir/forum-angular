@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { PostListComponent } from './post-list/post-list.component';
@@ -12,6 +13,7 @@ import { PostDisplayComponent } from './post-display/post-display.component';
 import { environment } from './../environments/environment';
 import { PostService } from './post.service';
 import { CommentDisplayComponent } from './comment-display/comment-display.component';
+import { NewPostComponent } from './new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -19,13 +21,15 @@ import { CommentDisplayComponent } from './comment-display/comment-display.compo
     PostListComponent,
     MainPageComponent,
     PostDisplayComponent,
-    CommentDisplayComponent
+    CommentDisplayComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
     routing,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    FormsModule
   ],
   providers: [PostService],
   bootstrap: [AppComponent]

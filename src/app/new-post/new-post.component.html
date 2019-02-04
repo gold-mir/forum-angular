@@ -1,0 +1,13 @@
+<div *ngIf="errorMessage != ''">
+  {{errorMessage}}
+</div>
+
+<form (ngSubmit)="submit()">
+  <div>
+    <input type="text" placeholder="Post Title" [(ngModel)]="title" class="title-input" name="title-input">
+  </div>
+  <div>
+    <textarea rows="30" placeholder="Post Body" [(ngModel)]=body class="body-input" name="body-input"></textarea>
+  </div>
+  <button type="submit">New Post</button>
+</form>

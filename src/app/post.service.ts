@@ -46,6 +46,7 @@ export class PostService {
       });
     });
   }
+
   getComments(id: string){
     let commentsObservable = this.db.list(`comments/${id}`).snapshotChanges();
 
@@ -59,5 +60,17 @@ export class PostService {
         observer.next(comments);
       });
     });
+  }
+
+  async newPost(post: Post){
+    let data = {
+      title: post.title,
+      author: post.author,
+      body: post.body
+    }
+
+    let promise = this.db.list('posts').push(data);
+    let result: any = await promise;
+    return result.path.pieces_[1];
   }
 }
