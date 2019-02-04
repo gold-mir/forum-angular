@@ -11,13 +11,15 @@ import { PostDisplayComponent } from './post-display/post-display.component';
 
 import { environment } from './../environments/environment';
 import { PostService } from './post.service';
+import { CommentDisplayComponent } from './comment-display/comment-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostListComponent,
     MainPageComponent,
-    PostDisplayComponent
+    PostDisplayComponent,
+    CommentDisplayComponent
   ],
   imports: [
     BrowserModule,
