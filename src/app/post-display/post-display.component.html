@@ -1,3 +1,4 @@
-<h2>This post has an id of: {{postID}} </h2>
+<h2>{{(post | async)?.title}}</h2>
+<h6>{{(post | async)?.author}}</h6>
 
-{{(post)?.title}}
+<p>{{(post | async)?.body}}</p>

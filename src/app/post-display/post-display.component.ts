@@ -12,17 +12,17 @@ import { Observable } from 'rxjs';
 export class PostDisplayComponent implements OnInit {
 
   public postID: string = null;
-  public postObs: Observable<Post>;
-  public post: Post;
+  public post: Observable<Post>;
+  public postData: Post;
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.postID = params.get('id');
-      this.postObs = this.postService.getByID(this.postID);
-      this.postObs.subscribe((post: Post) => {
-        this.post = post;
+      this.post = this.postService.getByID(this.postID);
+      this.post.subscribe((post: Post) => {
+        this.postData = post;
       });
     });
   }
