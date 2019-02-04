@@ -20,6 +20,7 @@ export class PostDisplayComponent implements OnInit {
   public commentData: Comment[];
 
   public postExists = true;
+  public commenting: boolean;
 
   constructor(private route: ActivatedRoute, private postService: PostService) { }
 

@@ -14,6 +14,7 @@ import { environment } from './../environments/environment';
 import { PostService } from './post.service';
 import { CommentDisplayComponent } from './comment-display/comment-display.component';
 import { NewPostComponent } from './new-post/new-post.component';
+import { NewCommentComponent } from './new-comment/new-comment.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NewPostComponent } from './new-post/new-post.component';
     MainPageComponent,
     PostDisplayComponent,
     CommentDisplayComponent,
-    NewPostComponent
+    NewPostComponent,
+    NewCommentComponent
   ],
   imports: [
     BrowserModule,

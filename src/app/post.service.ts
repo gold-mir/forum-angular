@@ -73,4 +73,12 @@ export class PostService {
     let result: any = await promise;
     return result.path.pieces_[1];
   }
+
+  newComment(postID: string, comment: Comment){
+    let data = {
+      author: comment.author,
+      body: comment.body
+    }
+    this.db.list(`comments/${postID}`).push(data);
+  }
 }
