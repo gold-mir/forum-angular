@@ -20,13 +20,26 @@ export class PostService {
   getPosts(){
     let posts = this.db.list('posts');
     // return posts.valueChanges();
-    return new Observable<any>((observer) => {
-      posts.valueChanges().subscribe((data: any) => {
+    return new Observable<Post[]>((observer) => {
+      posts.snapshotChanges().subscribe((data: any) => {
         let posts = [];
-        for(let item of data){
-          posts.push(new Post(item.title, item.body, item.author));
+        for(let meta of data){
+          let item = meta.payload.val();
+          posts.push(new Post(item.title, item.body, item.author, meta.key));
         }
         observer.next(posts);
+      });
+    });
+  }
+
+  getByID(id: String){
+    let post = this.db.object(`posts/${id}`).snapshotChanges();
+
+    return new Observable<Post>((observer) => {
+      post.subscribe((data: any) => {
+        let postData = data.payload.val();
+        let output = new Post(postData.title, postData.body, postData.author, data.key);
+        observer.next(output);
       });
     });
   }

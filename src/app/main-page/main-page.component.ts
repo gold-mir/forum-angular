@@ -12,7 +12,7 @@ import { Post } from '../models/post.model';
 })
 export class MainPageComponent implements OnInit {
 
-  public postsObservable: Observable<any>;
+  public postsObservable: Observable<Post[]>;
   public posts: Post[];
 
   constructor(public postService :PostService, private router :Router) { 
